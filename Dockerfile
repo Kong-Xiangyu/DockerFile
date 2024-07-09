@@ -23,23 +23,7 @@ RUN unzip -P linux.do server.zip
 # 清理：删除zip文件和.env文件（可选）
 RUN rm server.zip
 
-# 创建一个脚本来打印文件结构并运行可执行文件
-RUN echo '#!/bin/bash' > run.sh && \
-    echo 'echo "File structure:"' >> run.sh && \
-    echo 'if command -v tree > /dev/null; then' >> run.sh && \
-    echo '    tree .' >> run.sh && \
-    echo 'else' >> run.sh && \
-    echo '    find . | sed -e "s/[^-][^\/]*\// |/g" -e "s/|\([^ ]\)/|-\1/"' >> run.sh && \
-    echo 'fi' >> run.sh && \
-    echo 'echo "Running executable..."' >> run.sh && \
-    echo 'cd '"$FOLDER_NAME"' && ./'"$EXECUTABLE_NAME" >> run.sh && \
-    chmod +x run.sh
-
-# 运行脚本
-CMD ["./run.sh"]
-
-RUN cd ./fuclaude-linux-amd64-63154a9
-
+COPY ./fuclaude-linux-amd64-63154a9/* /app
 # 设置可执行权限
 RUN chmod +x fuclaude
 
