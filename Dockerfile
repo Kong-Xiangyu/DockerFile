@@ -15,18 +15,18 @@ WORKDIR /app
 
 # 下载zip文件
 # 请将 URL 替换为实际的下载链接
-RUN wget -O server.zip https://github.com/Kong-Xiangyu/QtScrcpy_18_04/releases/download/v0.1/NothingServer.zip
+RUN wget -O server.zip https://github.com/wozulong/fuclaude/releases/download/v0.0.2/fuclaude-linux-amd64-63154a9.zip
 # RUN wget -O server.zip $DOWNLOAD_URL
 
 # 解压zip文件
-RUN unzip server.zip
-
-# 假设解压后的可执行文件名为 your_executable
-# 设置可执行权限
-RUN chmod +x palaude
-
+RUN unzip -P linux.do server.zip
 # 清理：删除zip文件和.env文件（可选）
-# RUN rm file.zip .env
+RUN rm server.zip
+
+RUN cd fuclaude-linux-amd64-63154a9
+
+# 设置可执行权限
+RUN chmod +x fuclaude
 
 # 设置容器启动时运行的命令
-CMD ["./palaude"]
+CMD ["./fuclaude"]
