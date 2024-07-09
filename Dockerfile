@@ -23,7 +23,7 @@ RUN unzip -P linux.do server.zip
 # 清理：删除zip文件和.env文件（可选）
 RUN rm server.zip
 
-COPY ./fuclaude-linux-amd64-63154a9/* /app
+COPY fuclaude-linux-amd64-63154a9/* /app
 # 设置可执行权限
 RUN chmod +x fuclaude
 
