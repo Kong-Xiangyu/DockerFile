@@ -7,7 +7,7 @@ RUN apt-get update && apt-get install -y wget unzip gettext-base
 # 设置工作目录
 WORKDIR /app
 
-复制 .env 文件到容器中
+# 复制 .env 文件到容器中
 COPY .env /app/.env
 
 # 设置环境变量
