@@ -7,15 +7,17 @@ RUN apt-get update && apt-get install -y wget unzip gettext-base
 # 设置工作目录
 WORKDIR /app
 
-# 复制 .env 文件到容器中
-# COPY .env /app/.env
+复制 .env 文件到容器中
+COPY .env /app/.env
 
 # 设置环境变量
-# ENV $(cat .env | xargs)
+ENV $(cat .env | xargs)
 
 # 下载zip文件
 # 请将 URL 替换为实际的下载链接
 RUN wget -O server.zip https://github.com/wozulong/fuclaude/releases/download/v0.0.2/fuclaude-linux-amd64-63154a9.zip
+RUN FOLDER_NAME=$(basename $ZIP_URL .zip | sed 's/\.zip$//')
+RUN ll $FOLDER_NAME
 # RUN wget -O server.zip $DOWNLOAD_URL
 
 # 解压zip文件
